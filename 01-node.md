@@ -201,7 +201,7 @@ then it will calculate the tax total and display it.
 1.  Create new fn calculateTax. Need URL package
 
     ```js
-    const { URL } = require('url');
+    const url = require('url');
     const accounting = require('accounting');
 
     const calculateTax (req, res, next) {
@@ -210,7 +210,7 @@ then it will calculate the tax total and display it.
 
         /* get the amount value from querystring */
         const { amount } = qs;
-        
+
         // calculate the tax amount on this subtotal
 
         // calculate the total
