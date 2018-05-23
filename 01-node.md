@@ -205,8 +205,12 @@ then it will calculate the tax total and display it.
     const accounting = require('accounting');
 
     const calculateTax (req, res, next) {
-        // get subtotal value from the url
-        const subtotal = new URL(request.url, request.host);
+        /* get the full query string ?amount=1000 */
+        const qs = url.parse(req.url, true).query;
+
+        /* get the amount value from querystring */
+        const { amount } = qs;
+        
         // calculate the tax amount on this subtotal
 
         // calculate the total
