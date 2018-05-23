@@ -44,24 +44,26 @@
     * What changed in Local directory tree?
 
 1.  make use of the accounting to display proper dollar amount
+
     ```js
     const accounting = require('accounting');
     console.log(accounting.formatMoney(amount));
     ```
 
-    note: can use /* eslint no-console: 0 */ but [check with docs first](https://eslint.org/docs/rules/no-console)
+    note: can use /_ eslint no-console: 0 _/ but [check with docs first](https://eslint.org/docs/rules/no-console)
 
 [slide 11-13](http://avillaruz.computerstudi.es/comp2068/week03/index.html#slide=11)
 
 # git integration with VS Code
+
     * Ctrl+Shift P and search for 'git initialize repository'
     * Click Git icon and beside "Changes" click "+" to Stage all changes (equivalent to 'git add .')
     * type a message in textbox then click Checkmark to Commit
     * use terminal to type: `git remote add origin https://github.com/whatever`
     * Click ... icon and select 'Push'  (click OK to publish to branch)
 
-
 [slide 14](http://avillaruz.computerstudi.es/comp2068/week03/index.html#slide=14)
+
 # use of exports.
 
 1.  Create hello.js
@@ -72,11 +74,11 @@
     /* make public function that can be called from other files */
     exports.sayHello = () => console.log(message);
     ```
-    * Talk about valid js identifiers are any variable name that begins with a letter, or $, or _, after which may be a number
-    * js is case sensitive, use semicolons, and ignores white space between statements
-    
 
-1.  Create callingHello.js
+    * Talk about valid js identifiers are any variable name that begins with a letter, or $, or \_, after which may be a number
+    * js is case sensitive, use semicolons, and ignores white space between statements
+
+1)  Create callingHello.js
 
     * but intentionally leave out ./ for hello.js
     * you don't need .js extension for hello -- take it out
@@ -89,7 +91,9 @@
     /* call the public (i.e. exports) function in hello.js */
     hello.sayHello();
     ```
-1.  Create callingHello2.js
+
+1)  Create callingHello2.js
+
     * npm install @avcoder/hello2npm (show npm.im/@avcoder/hello2npm)
     * then require my module and try running sayHello()
 
@@ -98,6 +102,8 @@
 
     console.log(hello.sayHello());
     ```
+
+[slide 15](http://avillaruz.computerstudi.es/comp2068/week03/index.html#slide=15)
 
 # Installing connect
 
@@ -122,21 +128,22 @@
     ```js
     const connect = require('connect');
 
-    // instantiate a new connect object
+    /* instantiate a new connect object */
     const app = connect();
 
-    // set up a hello function
+    /* set up a hello function */
     const hello = (req, res, next) => res.end('hello world');
 
-    // execute hello fn when requests come in
+    /* execute hello fn when requests come in */
     app.use('/', hello);
-
     app.listen(3000);
 
     console.log('Server running at port 3000');
     ```
-
+    * style of code = anonymous fn within app.use('/', (req, res) => res.end('hi'))
     * Run above and you'll see hello world
+    * Change res.end to res.write -- what happens?  How to end it?
+    * Try sending <h1>Hi</h1>
     * Problem: even if you goto localhost:3000/about it'll be the same
 
 1.  Make /hello and /goodbye say the appropriate message
@@ -159,14 +166,19 @@
 
     * But where exactly will you put the app.use(generic) statement?
 
+[slide 16-17](http://avillaruz.computerstudi.es/comp2068/week03/index.html#slide=16)    
+
 # Install nodemon
 
 1.  Type `npm i -g nodemon`
 1.  Test it by typing `nodemon server`
-1.  Try changing your file and see what happens
+1.  Try changing your file and see what happens (add an emoji )
 1.  Try putting a syntax error
 
 # Create npm start to nodemon server.js
+
+    * try running npm test
+    * try putting "start": "ls" for now
 
 1.  In package.json under scripts type
     ```js

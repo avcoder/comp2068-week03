@@ -485,22 +485,87 @@ console.log(moment().startOf('day').fromNow());
               <p class="text-intro">The author of the module can expose any functionality through the exports object. </p>
             </li>
           </ul>
-
-
-
         </div>
         <!-- .end .wrap -->
       </section>
 
 
+      <section class="">
+        <!--.wrap = container (width: 90%) -->
+        <div class="wrap aligncenter size-70">
+          <h2>
+            connect
+          </h2>
+          <p class="text-intro">Before learning about Express, first learn about Connect which Express is built on</p>
+        </div>
+        <!-- .end .wrap -->
+      </section>
 
 
+      <section class="aligncenter bg-apple">
+        <div class="wrap size-90">
+          <h4>http vs connect</h4>
+          <div class="grid vertical-align">
+            <!-- .end .column -->
+            <div class="column">
+              <pre><code><h4>
+const http = require('http');
 
+http
+.createServer(function(request, response) {
+  response.writeHead(200);
+  response.end('Our first node page');
+})
+.listen(4000);
+                      </h4></code></pre>
+            </div>
+            <div class="column">
+              <pre><code><h4>
+const connect = require('connect');
 
+const app = connect();
 
+const hello = (req, res, next) => 
+                res.end('hello world');
 
+app.use('/', hello);
+app.listen(4000);
+                    </h4></code></pre>
+            </div>
+            <!-- .end .column -->
+          </div>
+        </div>
+        <!-- .end .wrap -->
+      </section>
 
+      <section class="">
+        <!--.wrap = container (width: 90%) -->
+        <div class="wrap aligncenter size-70">
+          <h2>
+            nodemon
+          </h2>
+          <p class="text-intro">It monitors for changes and restarts the server whenever a change is saved. No more Ctrl+c</p>
+        </div>
+        <!-- .end .wrap -->
+      </section>
 
+      <section class="">
+        <!--.wrap = container (width: 90%) -->
+        <div class="wrap aligncenter size-50">
+          <h2>
+            npm start
+          </h2>
+          <p class="text-intro">Configure package.json so that npm start will run your app using nodemone</p>
+          <pre><code><h4>
+{
+  "scripts": {
+    "start": "nodemon server"
+  },
+}
+</h4></code></pre>
+        </div>
+        <!-- .end .wrap -->
+      </section>
 
 
 
