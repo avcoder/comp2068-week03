@@ -200,23 +200,37 @@ then it will calculate the tax total and display it.
 
 1.  Create new fn calculateTax. Need URL package
 
+    * Don't say .query yet, let them find it
+    * Object destructuring a few args
+
     ```js
     const url = require('url');
     const accounting = require('accounting');
-    const app = require('connect');
+    const connect = require('connect');
 
-    const calculateTax (req, res, next) {
+    const app = connect();
+
+    function calculateTax(req, res, next) {
         /* get the full query string ?amount=1000 */
         const qs = url.parse(req.url, true).query;
 
         /* get the amount value from querystring */
         const { amount } = qs;
 
-        // calculate the tax amount on this subtotal
+        /* calculate tax and total */
+        const HST = amount * 0.13;
+        const total = parseFloat(HST) + parseFloat(amount);
 
-        // calculate the total
+        /* display all */
 
-        // display all 3 amounts
+        /*   res.writeHead(200, { 'Content-Type': 'text/plain' }); */
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end(`
+            <h1>Tax calculator</h1>
+            Amount: ${acc.formatMoney(amount)}<br>
+            HST: ${acc.formatMoney(HST)}<br>
+            Total: ${acc.formatMoney(total)}`
+        );
     }
 
     app.use('/calculatetax', calculateTax);
