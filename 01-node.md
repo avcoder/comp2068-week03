@@ -203,6 +203,7 @@ then it will calculate the tax total and display it.
     ```js
     const url = require('url');
     const accounting = require('accounting');
+    const app = require('connect');
 
     const calculateTax (req, res, next) {
         /* get the full query string ?amount=1000 */
