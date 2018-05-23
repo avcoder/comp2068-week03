@@ -166,8 +166,12 @@
 
     * But where exactly will you put the app.use(generic) statement?
 
-[slide 16-17](http://avillaruz.computerstudi.es/comp2068/week03/index.html#slide=16)    
+[slide 16](http://avillaruz.computerstudi.es/comp2068/week03/index.html#slide=16)    
+* 200 status code = ok
+* both http and connect use the method 'listen' to begin accepting connections
+* what parameters does createServer use? req and res
 
+[slide 17](http://avillaruz.computerstudi.es/comp2068/week03/index.html#slide=17)    
 # Install nodemon
 
 1.  Type `npm i -g nodemon`
@@ -175,6 +179,8 @@
 1.  Try changing your file and see what happens (add an emoji )
 1.  Try putting a syntax error
 
+
+[slide 18](http://avillaruz.computerstudi.es/comp2068/week03/index.html#slide=18)    
 # Create npm start to nodemon server.js
 
     * try running npm test
