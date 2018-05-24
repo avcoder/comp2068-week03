@@ -239,6 +239,8 @@ then it will calculate the tax total and display it.
     app.use('/calculatetax', calculateTax);
     ```
 
+    * show how to debug Node apps
+
 # Lab 3 - Steps to initialize project with Connect
 
 1.  Go into new folder Lab3
