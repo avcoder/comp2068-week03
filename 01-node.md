@@ -140,9 +140,10 @@
 
     console.log('Server running at port 3000');
     ```
+
     * style of code = anonymous fn within app.use('/', (req, res) => res.end('hi'))
     * Run above and you'll see hello world
-    * Change res.end to res.write -- what happens?  How to end it?
+    * Change res.end to res.write -- what happens? How to end it?
     * Try sending <h1>Hi</h1>
     * Problem: even if you goto localhost:3000/about it'll be the same
 
@@ -165,13 +166,16 @@
     ```
 
     * But where exactly will you put the app.use(generic) statement?
+    * modify generic function to return JSON.stringify() of some object instead
 
-[slide 16](http://avillaruz.computerstudi.es/comp2068/week03/index.html#slide=16)    
+[slide 16](http://avillaruz.computerstudi.es/comp2068/week03/index.html#slide=16)
+
 * 200 status code = ok
 * both http and connect use the method 'listen' to begin accepting connections
 * what parameters does createServer use? req and res
 
-[slide 17](http://avillaruz.computerstudi.es/comp2068/week03/index.html#slide=17)    
+[slide 17](http://avillaruz.computerstudi.es/comp2068/week03/index.html#slide=17)
+
 # Install nodemon
 
 1.  Type `npm i -g nodemon`
@@ -179,8 +183,8 @@
 1.  Try changing your file and see what happens (add an emoji )
 1.  Try putting a syntax error
 
+[slide 18](http://avillaruz.computerstudi.es/comp2068/week03/index.html#slide=18)
 
-[slide 18](http://avillaruz.computerstudi.es/comp2068/week03/index.html#slide=18)    
 # Create npm start to nodemon server.js
 
     * try running npm test
@@ -211,26 +215,25 @@ then it will calculate the tax total and display it.
     const app = connect();
 
     function calculateTax(req, res, next) {
-        /* get the full query string ?amount=1000 */
-        const qs = url.parse(req.url, true).query;
+      /* get the full query string ?amount=1000 */
+      const qs = url.parse(req.url, true).query;
 
-        /* get the amount value from querystring */
-        const { amount } = qs;
+      /* get the amount value from querystring */
+      const { amount } = qs;
 
-        /* calculate tax and total */
-        const HST = amount * 0.13;
-        const total = parseFloat(HST) + parseFloat(amount);
+      /* calculate tax and total */
+      const HST = amount * 0.13;
+      const total = parseFloat(HST) + parseFloat(amount);
 
-        /* display all */
+      /* display all */
 
-        /*   res.writeHead(200, { 'Content-Type': 'text/plain' }); */
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.end(`
+      /*   res.writeHead(200, { 'Content-Type': 'text/plain' }); */
+      res.writeHead(200, { 'Content-Type': 'text/html' });
+      res.end(`
             <h1>Tax calculator</h1>
             Amount: ${acc.formatMoney(amount)}<br>
             HST: ${acc.formatMoney(HST)}<br>
-            Total: ${acc.formatMoney(total)}`
-        );
+            Total: ${acc.formatMoney(total)}`);
     }
 
     app.use('/calculatetax', calculateTax);
